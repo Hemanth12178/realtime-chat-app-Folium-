@@ -22,8 +22,6 @@ function MessageList({ messages, currentUserId, isAdmin, onDelete }: Props) {
 
   return (
     <div className="messages">
-      {messages.length === 0 && <p className="empty">No messages yet. Say hi!</p>}
-
       {messages.map((message) => (
         <div
           key={message.id}

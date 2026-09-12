@@ -390,19 +390,6 @@ button:disabled {
   }
 }
 
-.empty {
-  margin: auto;
-  text-align: center;
-  color: var(--muted);
-}
-
-.empty::before {
-  content: "👋";
-  display: block;
-  margin-bottom: 8px;
-  font-size: 42px;
-}
-
 /* "alice joined" / "bob left" pill */
 .notice {
   align-self: center;
