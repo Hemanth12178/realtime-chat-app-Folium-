@@ -1,0 +1,27 @@
+# Starts the backend and the frontend together: docker compose up --build
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000" # host port : container port
+    environment:
+      # Whoever registers or logs in with this name is the admin.
+      # Override it with:  $env:ADMIN_USERNAME = "alice"  before "docker compose up"
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      # Four slashes = an absolute path (/data/chat.db). /data is the volume below,
+      # so users and messages survive "docker compose down".
+      DATABASE_URL: sqlite:////data/chat.db
+    volumes:
+      - chat-data:/data
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    # Start the backend first. Note: this waits for it to START, not to be ready,
+    # which is fine because the page only calls the API after you use it.
+    depends_on:
+      - backend
+
+volumes:
+  chat-data:

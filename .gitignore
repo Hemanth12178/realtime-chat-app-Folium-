@@ -1,0 +1,16 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Database and secrets
+chat.db
+.env
+
+# Node
+node_modules/
+dist/
+
+# Local only, not part of the project
+Claude outputs/
+docs/
